@@ -24,3 +24,9 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.headerFont{
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: italic;
+}
