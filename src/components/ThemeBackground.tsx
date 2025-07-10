@@ -9,6 +9,6 @@ export function ThemeBackground({ children }: ThemeBackgroundProps) {
   const { darkMode } = useTheme();
 
   return (
-    <div className={`h-full ${!darkMode ? "bg-gray-50" : ""}`}>{children}</div>
+    <div className={`h-full ${darkMode ? "bg-black" : "bg-white"}`}>{children}</div>
   );
 }

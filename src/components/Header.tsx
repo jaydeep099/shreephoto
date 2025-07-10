@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar,
   NavbarBrand,
@@ -13,7 +15,11 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <Navbar isBordered className="flex flex-row items-center">
+    <Navbar
+      className={`flex flex-row items-center border-b shadow-md ${
+        darkMode ? "bg-black text-white border-b-slate-800" : "bg-white text-black border-b-slate-200"
+      }`}
+    >
       <NavbarBrand className="p-4 flex flex-row items-center">
         {/* Hamburger icon: visible only on mobile */}
         <button
@@ -21,91 +27,129 @@ export function Header() {
           aria-label="Open menu"
           onClick={() => setMobileMenuOpen((open) => !open)}
         >
-          {/* Simple hamburger SVG */}
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
+          {mobileMenuOpen ? (
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          ) : (
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          )}
         </button>
-        <p className="font-bold lg:text-2xl md:text-2xl sm:text-xl headerFont">
+        <p
+          className={`font-extrabold text-xl sm:text-2xl headerFont ${
+            darkMode ? "text-white" : "text-black"
+          }`}
+        >
           Shree Photo Fashion
         </p>
       </NavbarBrand>
-      <div className="flex flex-1 items-center justify-end">
+
+      <div className="flex flex-1 items-center justify-between">
         {/* Menu links: hidden on mobile, visible on sm+ */}
         <NavbarContent className="hidden sm:flex gap-4 p-4">
           <NavbarItem>
             <Link
-              className="text-gray-300 hover:text-white text-muted-foreground hidden space-x-1 transition-colors sm:flex"
+              className={`transition-colors ${darkMode ? "text-white" : "text-black"}`}
               href="#"
             >
-              asd
+              Home
             </Link>
           </NavbarItem>
           <NavbarItem>
             <Link
-              className="text-gray-300 hover:text-white text-muted-foreground hidden space-x-1 transition-colors sm:flex"
+              className={`transition-colors ${darkMode ? "text-white" : "text-black"}`}
               href="#"
             >
-              abc
+              Service
             </Link>
           </NavbarItem>
           <NavbarItem>
             <Link
-              className="text-gray-300 hover:text-white text-muted-foreground hidden space-x-1 transition-colors sm:flex"
+              className={`transition-colors ${darkMode ? "text-white" : "text-black"}`}
               href="#"
             >
-              xyz
+              Gallery
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link
+              className={`transition-colors ${darkMode ? "text-white" : "text-black"}`}
+              href="#"
+            >
+              Contact
             </Link>
           </NavbarItem>
         </NavbarContent>
+
         {/* Mobile menu: visible only when hamburger is open */}
         {mobileMenuOpen && (
-          <div className="absolute top-14 left-0 w-full bg-gradient-to-b from-slate-900 to-gray-700 shadow-md sm:hidden z-50 h-12/12">
+          <div className={`absolute h-full top-14 left-0 w-full shadow-md sm:hidden z-50 ${darkMode ? " dark:bg-gradient-to-b dark:from-slate-900 dark:to-gray-700 text-white" : "bg-white text-black"} `}>
             <div className="flex flex-col gap-2 p-4 text-center">
               <Link
-                className="text-white font-serif"
+                className={`font-serif${darkMode ? " text-white" : " text-black"} transition-colors hover:opacity-80`}
                 href="#"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                asd
+                Home
               </Link>
               <Link
-                className="text-white font-serif"
+                className={`font-serif${darkMode ? " text-white" : " text-black"} transition-colors hover:opacity-80`}
                 href="#"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                abc
+                Service
               </Link>
               <Link
-                className="text-white font-serif"
+                className={`font-serif${darkMode ? " text-white" : " text-black"} transition-colors hover:opacity-80`}
                 href="#"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                xyz
+                Gallery
+              </Link>
+              <Link
+                className={`font-serif${darkMode ? " text-white" : " text-black"} transition-colors hover:opacity-80`}
+                href="#"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contact
               </Link>
             </div>
           </div>
         )}
       </div>
+
+      {/* Dark Mode Toggle */}
       <div className="flex flex-1 p-2 justify-end">
         <NavbarContent>
           <button
             onClick={toggleDarkMode}
-            className={`p-2 rounded-lg ${
+            className={`p-2 rounded-lg transition-colors ${
               darkMode
-                ? "bg-gray-700 hover:bg-gray-600"
-                : "bg-gray-100 hover:bg-gray-200"
-            } transition-colors`}
+                ? "bg-black"
+                : "bg-white"
+            }`}
             aria-label={
               darkMode ? "Switch to light mode" : "Switch to dark mode"
             }
