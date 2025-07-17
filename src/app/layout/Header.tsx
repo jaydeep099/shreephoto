@@ -16,7 +16,7 @@ export function Header() {
 
   return (
     <Navbar
-      className={`flex flex-row items-center border-b shadow-md ${
+      className={`flex flex-row items-center border-b z-10 shadow-md ${
         darkMode ? "bg-black text-white border-b-slate-800" : "bg-white text-black border-b-slate-200"
       }`}
     >
@@ -96,7 +96,7 @@ export function Header() {
           <NavbarItem>
             <Link
               className={`transition-colors ${darkMode ? "text-white" : "text-black"}`}
-              href="#"
+              href="/contact"
             >
               Contact
             </Link>
@@ -130,7 +130,7 @@ export function Header() {
               </Link>
               <Link
                 className={`font-serif${darkMode ? " text-white" : " text-black"} transition-colors hover:opacity-80`}
-                href="#"
+                href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact

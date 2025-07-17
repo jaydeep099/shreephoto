@@ -8,8 +8,8 @@ export function Footer() {
 
   return (
     <footer
-      className={`lg:p-6 border-t shadow-md${
-        darkMode ? "bg-black text-white border-t-slate-800" : "bg-white text-black border-t-grey-200"
+      className={`lg:p-4 border-t shadow-md${
+        darkMode ? "bg-slate-900 text-white border-t-slate-800" : "bg-white text-black border-t-grey-200"
         }`}
     >
       <div className="container mx-auto">

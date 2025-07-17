@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeBackground } from "../components/ThemeBackground";
 import { ThemeProvider } from "@/context/ThemeContext";
+import Home from "./layout/RouteLayout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Shree Photo Fashion",
-  description:
-    "A Photo Studio based on Bhavnagar , Gujarat , India",
+  description: "A Photo Studio based on Bhavnagar , Gujarat , India",
   keywords: [
     "Shree Photo Fashion",
     "Photo Studio Bhavnagar",
@@ -44,8 +44,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}
       >
         <ThemeProvider>
-            <ThemeBackground>{children}</ThemeBackground>
-          </ThemeProvider>
+          <ThemeBackground>
+            <Home>{children}</Home>
+          </ThemeBackground>
+        </ThemeProvider>
       </body>
     </html>
   );
