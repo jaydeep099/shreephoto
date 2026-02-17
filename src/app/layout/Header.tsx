@@ -16,7 +16,7 @@ export function Header() {
 
   return (
     <Navbar
-      className={`flex flex-row items-center border-b z-10 shadow-md ${
+      className={`sticky top-0 flex flex-row items-center border-b z-50 shadow-md ${
         darkMode ? "bg-black text-white border-b-slate-800" : "bg-white text-black border-b-slate-200"
       }`}
     >
@@ -72,7 +72,7 @@ export function Header() {
           <NavbarItem>
             <Link
               className={`transition-colors ${darkMode ? "text-white" : "text-black"}`}
-              href="#"
+              href="/"
             >
               Home
             </Link>
@@ -80,17 +80,17 @@ export function Header() {
           <NavbarItem>
             <Link
               className={`transition-colors ${darkMode ? "text-white" : "text-black"}`}
-              href="#"
+              href="/services"
             >
-              Service
+              Services
             </Link>
           </NavbarItem>
           <NavbarItem>
             <Link
               className={`transition-colors ${darkMode ? "text-white" : "text-black"}`}
-              href="#"
+              href="/about"
             >
-              Gallery
+              About
             </Link>
           </NavbarItem>
           <NavbarItem>
@@ -105,38 +105,68 @@ export function Header() {
 
         {/* Mobile menu: visible only when hamburger is open */}
         {mobileMenuOpen && (
-          <div className={`absolute h-full top-14 left-0 w-full shadow-md sm:hidden z-50 ${darkMode ? " dark:bg-gradient-to-b dark:from-slate-900 dark:to-gray-700 text-white" : "bg-white text-black"} `}>
-            <div className="flex flex-col gap-2 p-4 text-center">
-              <Link
-                className={`font-serif${darkMode ? " text-white" : " text-black"} transition-colors hover:opacity-80`}
-                href="#"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link
-                className={`font-serif${darkMode ? " text-white" : " text-black"} transition-colors hover:opacity-80`}
-                href="#"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Service
-              </Link>
-              <Link
-                className={`font-serif${darkMode ? " text-white" : " text-black"} transition-colors hover:opacity-80`}
-                href="#"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Gallery
-              </Link>
-              <Link
-                className={`font-serif${darkMode ? " text-white" : " text-black"} transition-colors hover:opacity-80`}
-                href="/contact"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Contact
-              </Link>
+          <>
+            {/* Backdrop overlay */}
+            <div
+              className="fixed inset-0 bg-black/50 z-[55] sm:hidden"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            {/* Mobile menu */}
+            <div
+              className={`fixed top-[56px] left-0 w-full shadow-xl sm:hidden z-[60] ${
+                darkMode
+                  ? "bg-gray-900 text-white"
+                  : "bg-white text-black"
+              }`}
+            >
+              <div className="flex flex-col gap-1 p-4">
+                <Link
+                  className={`font-serif py-3 px-4 rounded-lg transition-colors ${
+                    darkMode
+                      ? "text-white hover:bg-gray-800"
+                      : "text-black hover:bg-gray-100"
+                  }`}
+                  href="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Home
+                </Link>
+                <Link
+                  className={`font-serif py-3 px-4 rounded-lg transition-colors ${
+                    darkMode
+                      ? "text-white hover:bg-gray-800"
+                      : "text-black hover:bg-gray-100"
+                  }`}
+                  href="/services"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Services
+                </Link>
+                <Link
+                  className={`font-serif py-3 px-4 rounded-lg transition-colors ${
+                    darkMode
+                      ? "text-white hover:bg-gray-800"
+                      : "text-black hover:bg-gray-100"
+                  }`}
+                  href="/about"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  About
+                </Link>
+                <Link
+                  className={`font-serif py-3 px-4 rounded-lg transition-colors ${
+                    darkMode
+                      ? "text-white hover:bg-gray-800"
+                      : "text-black hover:bg-gray-100"
+                  }`}
+                  href="/contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Contact
+                </Link>
+              </div>
             </div>
-          </div>
+          </>
         )}
       </div>
 
